@@ -28,7 +28,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Execution de pytest
-                sh 'pytest --maxfail=1 --disable-warnings'
+                sh 'python -m pytest --maxfail=1 --disable-warnings'
             }
         }
         stage('Build Docker Image') {
