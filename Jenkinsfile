@@ -5,6 +5,10 @@ pipeline {
         pollSCM('H/5 * * * *')
     }
 
+    environment {
+        DOCKERHUB = credentials('4cf2d8b6-f34e-4ee7-86f3-7166aae7af8d')
+    }
+
     stages {
         stage('Checkout'){
             steps {
@@ -33,7 +37,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 // Connexion à DH et push de l'image
-                sh 'docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASS'
+                sh 'docker login -u $DOCKERHUB_USR -p $DOCKERHUB_PSW'
                 sh 'docker push zivanR/jenkins-pokedex-app:latest'
             }
         }
