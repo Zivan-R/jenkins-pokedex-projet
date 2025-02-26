@@ -21,8 +21,7 @@ pipeline {
                 // Installation des dépendances listées dans requirements.txt
                 sh '''
                 python3 -m venv venv
-                source venv/bin/activate
-                pip install -r requirements.txt
+                bash -c "source venv/bin/activate && pip install -r requirements.txt"
                 '''
             }
         }
